@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pan_engine
+namespace Engine.Input
 {
     public class InputManager : GameComponent
-        /// <summary>
-        /// A class that interfaces with the user to provide input info
-        /// more precisely than the XNA input.
-        /// </summary>
+    /// <summary>
+    /// A class that interfaces with the user to provide input info
+    /// more precisely than the XNA input.
+    /// </summary>
     {
 
         // --- Declarations ---

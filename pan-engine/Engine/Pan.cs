@@ -1,8 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Engine.Input;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace pan_engine
+namespace Engine
 {
     public class Pan : Game
     {
@@ -21,7 +22,7 @@ namespace pan_engine
         {
             // TODO: Add your initialization logic here
             inputManager = new InputManager(this);
-            this.Components.Add(inputManager);
+            Components.Add(inputManager);
 
             base.Initialize();
         }

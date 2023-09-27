@@ -19,6 +19,8 @@ namespace Engine
             get { return new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight); }
         }
 
+        public static Texture2D defaultTexture;
+
 
 
         public Pan()
@@ -43,6 +45,7 @@ namespace Engine
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            defaultTexture = Content.Load<Texture2D>("default_texture");
         }
 
         protected override void UnloadContent()

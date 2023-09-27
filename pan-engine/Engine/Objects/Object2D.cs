@@ -32,15 +32,25 @@ namespace pan_engine.Engine.Objects
         // public Rectangle rect;
 
 
-        public Object2D(string texturePath, Vector2 _position, Vector2 _scale, float _rotation = 0, float _drawOrder = 0) 
-        { 
+        public Object2D(string texturePath, Vector2 position, float rotation = 0, float drawOrder = 0) 
+        {
             // might move this into a new Load method at some point.
             texture = Pan.content.Load<Texture2D>(texturePath);
-            position = _position; 
-            scale = _scale;
-            rotation = _rotation;
-            drawOrder = _drawOrder;
+            this.position = position;
+            scale = Vector2.One;
+            this.rotation = rotation;
+            this.drawOrder = drawOrder;
         }
+        public Object2D(Texture2D texture, Vector2 position, float rotation = 0, float drawOrder = 0)
+        {
+            this.texture = texture;
+            this.position = position;
+            this.scale = Vector2.One;
+            this.rotation = rotation;
+            this.drawOrder = drawOrder;
+        }
+        public Object2D(Vector2 position, float rotation = 0, float drawOrder = 0)
+            : this(Pan.defaultTexture, position, rotation, drawOrder) { }
 
         public virtual void Update() {  }
 

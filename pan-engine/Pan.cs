@@ -4,12 +4,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace pan_engine
 {
-    public class Game1 : Game
+    public class Pan : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        public static InputManager inputManager;
 
-        public Game1()
+        public Pan()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -19,6 +20,8 @@ namespace pan_engine
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            inputManager = new InputManager(this);
+            this.Components.Add(inputManager);
 
             base.Initialize();
         }

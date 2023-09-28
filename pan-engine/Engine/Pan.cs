@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using pan_engine.Engine.Scenes;
 using System.Net.Http.Headers;
 using System.Net.Mime;
 
@@ -10,6 +11,7 @@ namespace Engine
 {
     public class Pan : Game
     {
+        // globals
         public static GraphicsDeviceManager graphics;
         public static SpriteBatch spriteBatch;
         public static InputManager inputManager;
@@ -18,7 +20,7 @@ namespace Engine
         {
             get { return new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight); }
         }
-
+        public static Scene currentScene;
         public static Texture2D defaultTexture;
 
 
@@ -59,7 +61,7 @@ namespace Engine
                 Exit();
 
             // TODO: Add your update logic here
-
+            currentScene.Update();
             base.Update(gameTime);
         }
 
@@ -69,7 +71,7 @@ namespace Engine
 
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.BackToFront, null);
-
+            currentScene.Draw();
             base.Draw(gameTime);
         }
 

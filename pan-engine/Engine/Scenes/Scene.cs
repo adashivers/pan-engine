@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Text.Json;
 using pan_engine.Engine.Objects;
 
 namespace pan_engine.Engine.Scenes
@@ -21,6 +24,19 @@ namespace pan_engine.Engine.Scenes
         public Scene(List<Object2D> objectList) 
         { 
             objectsInScene = objectList;
+        }
+
+        public Scene(string filePath)
+        {
+            string jsonString = File.ReadAllText(filePath);
+            this.objectsInScene = JsonSerializer.Deserialize<List<Object2D>>(jsonString);
+        }
+
+        private string Serialize(string fileName)
+        {
+            string serialized = JsonSerializer.Serialize(objectsInScene);
+            File.WriteAllText($"{fileName}.json", serialized);
+            return serialized;
         }
 
         public void Update()

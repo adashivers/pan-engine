@@ -27,10 +27,8 @@ namespace pan_engine.Engine.Objects
             }
         }
 
-
         // might add something like this later for collision.
         // public Rectangle rect;
-
 
         public Object2D(string texturePath, Vector2 position, float rotation = 0, float drawOrder = 0) 
         {

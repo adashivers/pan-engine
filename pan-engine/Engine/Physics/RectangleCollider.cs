@@ -61,13 +61,7 @@ namespace pan_engine.Engine.Physics
 
         public override bool Collide(RectangleCollider c)
         {
-            return
-                (
-                    Right > c.Left
-                    && Left < c.Right
-                    && Bottom > c.Top
-                    && Top < c.Bottom
-                );
+            return CollisionHandler.Collide(this, c);
         }
     }
 }

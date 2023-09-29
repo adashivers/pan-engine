@@ -22,6 +22,13 @@ namespace Engine
         }
         public static Scene currentScene;
         public static Texture2D defaultTexture;
+        public static Texture2D DefaultTexture { 
+            get
+            {
+                return content.Load<Texture2D>("default_texture");
+            }
+        }
+            
 
 
 
@@ -73,12 +80,8 @@ namespace Engine
             spriteBatch.Begin(SpriteSortMode.BackToFront, null);
             currentScene.Draw();
             base.Draw(gameTime);
+            spriteBatch.End();
         }
 
-        protected override void EndRun()
-        {
-            spriteBatch.End();
-            base.EndRun();
-        }
     }
 }

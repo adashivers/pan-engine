@@ -26,19 +26,6 @@ namespace pan_engine.Engine.Scenes
             objectsInScene = objectList;
         }
 
-        public Scene(string filePath)
-        {
-            string jsonString = File.ReadAllText(filePath);
-            this.objectsInScene = JsonSerializer.Deserialize<List<Object2D>>(jsonString);
-        }
-
-        private string Serialize(string fileName)
-        {
-            string serialized = JsonSerializer.Serialize(objectsInScene);
-            File.WriteAllText($"{fileName}.json", serialized);
-            return serialized;
-        }
-
         public void Update()
         {
             foreach (Object2D obj in objectsInScene) { obj.Update(); }

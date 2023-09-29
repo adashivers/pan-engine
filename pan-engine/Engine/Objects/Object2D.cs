@@ -13,7 +13,9 @@ namespace pan_engine.Engine.Objects
         public Texture2D texture;
         public Vector2 position, scale;
         public float rotation;
-        public float drawOrder
+
+        private float drawOrder;
+        public float DrawOrder
             /// <summary>
             /// The drawing order of this sprite. Value between 0 and 1, with 0 being the frontmost layer.
             /// </summary>
@@ -37,7 +39,7 @@ namespace pan_engine.Engine.Objects
             this.position = position;
             scale = Vector2.One;
             this.rotation = rotation;
-            this.drawOrder = drawOrder;
+            this.DrawOrder = drawOrder;
         }
         public Object2D(Texture2D texture, Vector2 position, float rotation = 0, float drawOrder = 0)
         {
@@ -45,12 +47,15 @@ namespace pan_engine.Engine.Objects
             this.position = position;
             this.scale = Vector2.One;
             this.rotation = rotation;
-            this.drawOrder = drawOrder;
+            this.DrawOrder = drawOrder;
         }
+
+        // Constructor where you copy from another object
+
         public Object2D(Vector2 position, float rotation = 0, float drawOrder = 0)
             : this(Pan.defaultTexture, position, rotation, drawOrder) { }
 
-        public virtual void Update() {  }
+        public virtual void Update() { }
 
         public virtual void Draw() 
         { 

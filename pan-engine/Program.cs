@@ -1,3 +1,3 @@
 ﻿
-using var game = new Engine.Pan();
+using var game = new TestGame.TestGame();
 game.Run();

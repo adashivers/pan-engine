@@ -13,6 +13,7 @@ namespace pan_engine.Engine.Objects
         public Texture2D texture;
         public Vector2 position, scale;
         public float rotation;
+        public Color color = Color.White;
 
         private float drawOrder;
         public float DrawOrder

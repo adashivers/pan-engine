@@ -1,3 +1,3 @@
 ﻿
-using var game = new pan_engine.TestGame();
+using var game = new TestGame.TestGame();
 game.Run();

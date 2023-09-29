@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using pan_engine.Engine.Scenes;
 using System.Net.Http.Headers;
 using System.Net.Mime;
 
@@ -10,6 +11,7 @@ namespace Engine
 {
     public class Pan : Game
     {
+        // globals
         public static GraphicsDeviceManager graphics;
         public static SpriteBatch spriteBatch;
         public static InputManager inputManager;
@@ -18,6 +20,15 @@ namespace Engine
         {
             get { return new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight); }
         }
+        public static Scene currentScene;
+        public static Texture2D defaultTexture;
+        public static Texture2D DefaultTexture { 
+            get
+            {
+                return content.Load<Texture2D>("default_texture");
+            }
+        }
+            
 
 
 
@@ -43,6 +54,7 @@ namespace Engine
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            defaultTexture = Content.Load<Texture2D>("default_texture");
         }
 
         protected override void UnloadContent()
@@ -56,7 +68,7 @@ namespace Engine
                 Exit();
 
             // TODO: Add your update logic here
-
+            currentScene.Update();
             base.Update(gameTime);
         }
 
@@ -65,15 +77,11 @@ namespace Engine
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
-
+            spriteBatch.Begin(SpriteSortMode.BackToFront, null);
+            currentScene.Draw();
             base.Draw(gameTime);
+            spriteBatch.End();
         }
 
-        protected override void EndRun()
-        {
-            spriteBatch.End();
-            base.EndRun();
-        }
     }
 }

@@ -27,6 +27,20 @@ namespace Engine.Input
         {
             leftButton, rightButton, middleButton
         }
+        public float MouseX
+        {
+            get
+            {
+                return currentMouseState.X;
+            }
+        }
+        public float MouseY
+        {
+            get
+            {
+                return currentMouseState.Y;
+            }
+        }
 
         public InputManager(Game game) : base(game) { }
 

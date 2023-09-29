@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
+
 using System.Text;
 using System.Threading.Tasks;
 
 namespace pan_engine.Engine.Physics
 {
-    public class Rectangle : Collider
+    public class RectangleCollider : Collider
     {
         public Vector2 centerPosition;
         public Vector2 size;
@@ -40,7 +41,7 @@ namespace pan_engine.Engine.Physics
             }
         }
 
-        public Rectangle(Vector2 centerPosition, Vector2 size)
+        public RectangleCollider(Vector2 centerPosition, Vector2 size)
         {
             this.centerPosition = centerPosition;
             this.size = size;
@@ -48,9 +49,9 @@ namespace pan_engine.Engine.Physics
 
         public override bool Collide(Collider c)
         {
-            if (c is Rectangle)
+            if (c is RectangleCollider)
             {
-                return Collide(c as Rectangle);
+                return Collide(c as RectangleCollider);
             } else
             {
                 Console.WriteLine($"The {GetType().Name} collider class has no implementation to collide with this object");
@@ -58,7 +59,7 @@ namespace pan_engine.Engine.Physics
             }
         }
 
-        public override bool Collide(Rectangle c)
+        public override bool Collide(RectangleCollider c)
         {
             return
                 (

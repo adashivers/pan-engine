@@ -10,6 +10,6 @@ namespace pan_engine.Engine.Physics
     public abstract class Collider
     {
         public abstract bool Collide(Collider c);
-        public abstract bool Collide(Rectangle c);
+        public abstract bool Collide(RectangleCollider c);
     }
 }

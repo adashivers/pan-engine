@@ -51,17 +51,17 @@ namespace pan_engine.Engine.Physics
         {
             if (c is RectangleCollider)
             {
-                return Collide(c as RectangleCollider);
-            } else
+                return CollisionHandler.Collide(this, c as RectangleCollider);
+            } 
+            else if (c is CircleCollider)
+            {
+                return CollisionHandler.Collide(this, c as CircleCollider);
+            } 
+            else
             {
                 Console.WriteLine($"The {GetType().Name} collider class has no implementation to collide with this object");
                 return false;
             }
-        }
-
-        public override bool Collide(RectangleCollider c)
-        {
-            return CollisionHandler.Collide(this, c);
         }
     }
 }

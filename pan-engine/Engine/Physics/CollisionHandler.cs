@@ -25,10 +25,29 @@ namespace pan_engine.Engine.Physics
             return (c1.centerPosition - c2.centerPosition).Length() < c1.radius + c2.radius;
         }
 
-        public static bool Collide(RectangleCollider c1, CircleCollider c2)
+        public static bool Collide(RectangleCollider rect, CircleCollider circ)
         {
             // TODO
-            return false;
+
+            // within top-bottom range
+            if (circ.centerPosition.X <= rect.Right && circ.centerPosition.X >= rect.Left)
+                return (circ.centerPosition.Y <= rect.Bottom + circ.radius && circ.centerPosition.Y >= rect.Top - circ.radius); 
+
+            // within left-right range
+            if (circ.centerPosition.Y <= rect.Bottom && circ.centerPosition.Y >= rect.Top)
+                return (circ.centerPosition.X <= rect.Right + circ.radius && circ.centerPosition.X >= rect.Left - circ.radius);
+
+            // closest corner
+            float closestCornerX = (circ.centerPosition.X < rect.centerPosition.X) ? rect.Left : rect.Right;
+            float closestCornerY = (circ.centerPosition.Y < rect.centerPosition.Y) ? rect.Top : rect.Bottom;
+
+            Vector2 closestCorner = new Vector2(closestCornerX, closestCornerY);
+            return (circ.centerPosition - closestCorner).Length() < 2 * circ.radius;
+        }
+
+        public static bool Collide(CircleCollider circ, RectangleCollider rect)
+        {
+            return Collide(rect, circ);
         }
     }
 }

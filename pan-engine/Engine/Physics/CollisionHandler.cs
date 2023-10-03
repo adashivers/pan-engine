@@ -9,6 +9,7 @@ namespace pan_engine.Engine.Physics
 {
     internal static class CollisionHandler
     {
+        // tested
         public static bool Collide(RectangleCollider c1, RectangleCollider c2)
         {
             return
@@ -20,11 +21,13 @@ namespace pan_engine.Engine.Physics
                 );
         }
 
+        
         public static bool Collide(CircleCollider c1, CircleCollider c2)
         {
             return (c1.centerPosition - c2.centerPosition).Length() < c1.radius + c2.radius;
         }
 
+        // tested
         public static bool Collide(RectangleCollider rect, CircleCollider circ)
         {
             // TODO
@@ -42,7 +45,7 @@ namespace pan_engine.Engine.Physics
             float closestCornerY = (circ.centerPosition.Y < rect.centerPosition.Y) ? rect.Top : rect.Bottom;
 
             Vector2 closestCorner = new Vector2(closestCornerX, closestCornerY);
-            return (circ.centerPosition - closestCorner).Length() < 2 * circ.radius;
+            return (circ.centerPosition - closestCorner).Length() < circ.radius;
         }
 
         public static bool Collide(CircleCollider circ, RectangleCollider rect)

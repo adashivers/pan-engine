@@ -22,13 +22,8 @@ namespace Engine
         }
         public static Scene currentScene;
         public static Texture2D defaultTexture;
-        public static Texture2D DefaultTexture { 
-            get
-            {
-                return content.Load<Texture2D>("default_texture");
-            }
-        }
-            
+        public static Texture2D defaultSquare;
+
 
 
 
@@ -54,7 +49,8 @@ namespace Engine
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            defaultTexture = Content.Load<Texture2D>("default_texture");
+            defaultTexture = content.Load<Texture2D>("default_texture");
+            defaultSquare = content.Load<Texture2D>("default_square");
         }
 
         protected override void UnloadContent()
